@@ -83,6 +83,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
       {
         field: "simplePriceHistory",
         headerName: "Last 30d",
+        cellRenderer: "agSparklineCellRenderer",
       },
     ];
   }, []);
