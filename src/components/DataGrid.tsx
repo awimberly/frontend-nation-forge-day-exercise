@@ -1,10 +1,10 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from "react";
 
 // Types
-import { DataGridProps, Ticker } from '../utils/types';
+import { DataGridProps, Ticker } from "../utils/types";
 
 // AG Grid Imports
-import { AgGridReact } from 'ag-grid-react';
+import { AgGridReact } from "ag-grid-react";
 import {
   CellClassParams,
   ColDef,
@@ -14,10 +14,10 @@ import {
   SelectionChangedEvent,
   ValueFormatterParams,
   ValueGetterParams,
-} from 'ag-grid-community';
+} from "ag-grid-community";
 
 // Cell Renderers
-import { TickerCellRenderer } from './TickerCellRenderer';
+import { TickerCellRenderer } from "./TickerCellRenderer";
 
 // Default Col Def (Applies to All Columns)
 const defaultColDef = {
@@ -63,19 +63,20 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
   const colDefs = useMemo<ColDef[]>(() => {
     return [
       {
-        field: 'ticker',
+        field: "ticker",
       },
       {
-        field: 'shares',
+        field: "shares",
       },
       {
-        field: 'averagePrice',
+        field: "averagePrice",
       },
       {
-        field: 'currentPrice',
+        field: "currentPrice",
       },
       {
-        field: 'simplePriceHistory',
+        field: "simplePriceHistory",
+        headerName: "Last 30d",
       },
     ];
   }, []);
