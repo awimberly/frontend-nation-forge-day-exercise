@@ -104,7 +104,8 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
 
   // Selection Changed Event Handler
   const onSelectionChanged = useCallback((event: SelectionChangedEvent) => {
-    // TODO: Implement Selection Changed Event Handler to get currently selected row and pass its data to parent component (Step 7)
+    const currentlySelectedRowData = event.api.getSelectedNodes()[0]?.data;
+    setSelectedRow(currentlySelectedRowData);
   }, []);
 
   return (
@@ -113,6 +114,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
       columnDefs={colDefs}
       defaultColDef={defaultColDef}
       rowSelection={rowSelection}
+      onSelectionChanged={onSelectionChanged}
     />
   );
 };
