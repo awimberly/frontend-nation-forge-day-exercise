@@ -62,12 +62,27 @@ const onFirstDataRendered = (params: FirstDataRenderedEvent) => {
       columns: ["ticker", "averagePrice", "PnL"],
     },
     chartType: "treemap",
+    chartThemeOverrides: {
+      common: {
+        title: {
+          text: "Portfolio Allocation",
+          enabled: true,
+        },
+        listeners: {
+          seriesNodeClick: (event) => {
+            const selectedNode = params.api.getRowNode(event.datum.ticker);
+            selectedNode?.setSelected(true);
+            params.api.ensureIndexVisible(selectedNode?.rowIndex ?? 0, null);
+          },
+        },
+      },
+    },
   });
 };
 
 // Set Row ID Strategy
 const getRowId = (params: GetRowIdParams): string => {
-  // TODO: Implement Row ID strategy to uniquely identify each row (Bonus Task)
+  return params.data.ticker; // Use ticker as the unique identifier for each row
 };
 
 const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
@@ -121,6 +136,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
       rowSelection="single"
       onSelectionChanged={onSelectionChanged}
       onFirstDataRendered={onFirstDataRendered}
+      getRowId={getRowId}
     />
   );
 };
