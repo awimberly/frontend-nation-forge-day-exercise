@@ -23,8 +23,6 @@ ModuleRegistry.registerModules([
 function App() {
   const [selectedRow, setSelectedRow] = useState<any>(null);
 
-  console.log(`Selected Row: ${selectedRow}`);
-
   return (
     <div className="container">
       <Header />

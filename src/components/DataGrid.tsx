@@ -74,7 +74,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
     return [
       {
         field: "ticker",
-        cellRenderer: "tickerCellRenderer",
+        cellRenderer: TickerCellRenderer,
       },
       {
         field: "shares",
@@ -113,7 +113,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
       rowData={rowData}
       columnDefs={colDefs}
       defaultColDef={defaultColDef}
-      rowSelection={rowSelection}
+      rowSelection="single"
       onSelectionChanged={onSelectionChanged}
     />
   );

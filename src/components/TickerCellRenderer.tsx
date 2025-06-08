@@ -9,6 +9,7 @@ export const TickerCellRenderer: FunctionComponent<CustomCellRendererProps> = ({
     <div className="tickerContainer">
       <img
         src={`https://www.ag-grid.com/example/finance/logos/${data.ticker}.png`}
+        alt={data.ticker}
       />
       <b>{data.ticker}</b>
     </div>
