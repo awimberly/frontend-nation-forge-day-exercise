@@ -57,7 +57,12 @@ const rowSelection = {
 
 // On First Data Rendered Event
 const onFirstDataRendered = (params: FirstDataRenderedEvent) => {
-  // TODO:  Create Integrated TreeMap Chart on Load (Step 10)
+  params.api.createRangeChart({
+    cellRange: {
+      columns: ["ticker", "averagePrice", "PnL"],
+    },
+    chartType: "treemap",
+  });
 };
 
 // Set Row ID Strategy
@@ -115,6 +120,7 @@ const DataGrid: React.FC<DataGridProps> = ({ data = [], setSelectedRow }) => {
       defaultColDef={defaultColDef}
       rowSelection="single"
       onSelectionChanged={onSelectionChanged}
+      onFirstDataRendered={onFirstDataRendered}
     />
   );
 };
